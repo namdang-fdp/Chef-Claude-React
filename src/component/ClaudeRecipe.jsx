@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 const ClaudeRecipe = (props) => {
     return (
         <>
-            {props.showRecipe && (
+            {props.showRecipeContainer ? (
                 <section className="mt-8 max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-lg leading-relaxed text-gray-800">
                     <ReactMarkdown
                         components={{
@@ -39,7 +39,7 @@ const ClaudeRecipe = (props) => {
                         {props.showRecipe}
                     </ReactMarkdown>
                 </section>
-            )}
+            ) :  null}
         </>
     );
 };

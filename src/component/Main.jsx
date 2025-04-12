@@ -9,6 +9,8 @@ const Main = () => {
 
   const [Recipe, setRecipe] = React.useState()
 
+  const [showRecipe, setShowRecipe] = React.useState(false)
+
   const ingredientListItem = ingredient.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ))
@@ -18,12 +20,14 @@ const Main = () => {
   }
 
   function clearAll() {
+    setShowRecipe(prevShow => !prevShow)
     setIngredient([])
   }
 
   async function handleGetRecipe() {
     const recipeMarkdown = await getRecipeFromMistral(ingredient)
     setRecipe(recipeMarkdown)
+    setShowRecipe(prevShow => !prevShow)
   }
 
   return(
@@ -39,6 +43,7 @@ const Main = () => {
       />
       <ClaudeRecipe 
         showRecipe = {Recipe}
+        showRecipeContainer = {showRecipe}
       />   
     </main>
   );
